@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<info>
+    <id>musicapi</id>
+    <name>Music Api</name>
+    <description>Music scanner api for owncloud 8</description>
+    <licence>AGPL</licence>
+    <author>Anto Martel</author>
+    <version>0.0.10</version>
+    <namespace>MusicApi</namespace>
+    <category>other</category>
+    <dependencies>
+        <owncloud min-version="8" />
+    </dependencies>
+</info>

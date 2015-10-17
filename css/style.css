@@ -1,0 +1,19 @@
+tr.song {
+	height: 35px;
+}
+tr.song:hover {
+	background-color: #e4e4e0;
+}
+.playing-song {
+	background-color: #d3d3cf;
+}
+.player-interface {
+	padding: 5px;
+	text-align: center;
+}
+.player-interface .player-button {
+	padding: 5px;
+}
+.player-interface .player-button:hover {
+	background-color: #e4e4e0;
+}
