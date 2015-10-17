@@ -50,8 +50,6 @@ class MusicController extends Controller {
     public function getMusic(){
 
         $aSongs = $this->loadSongs();
-        //$aAlbums = $this->loadAlbums();
-        //\OC::$server->getSession()->close();
 
         if(is_array($aSongs)){
             $result=[
@@ -107,16 +105,15 @@ class MusicController extends Controller {
 
         $aSongs='';
         while( $row = $result->fetchRow()) {
-            $aSongs[] = $row;
 
-
-            /*$path = \OC\Files\Filesystem::getPath($row['file_id']);
+            $path = \OC\Files\Filesystem::getPath($row['file_id']);
 
             if(\OC\Files\Filesystem::file_exists($path)){
-                $aSongs[$row['album_id']][] = $row;
+                $row['path'] = $path;
+                $aSongs[] = $row;
             }else{
                 //$this->deleteFromDB($row['id'],$row['album_id'],$row['artist_id'],$row['file_id']);
-            }*/
+            }
 
         }
         if(is_array($aSongs)){
