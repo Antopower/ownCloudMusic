@@ -67,11 +67,20 @@
         audio.load();//suspends and restores all audio element
         audio.play();
         player.playingState = "Playing";
+        player.setVolume();
         $('.player-button.play-pause').removeClass('fa-play').addClass('fa-pause');
         $('.song-title').text(player.currentSong.title);
         $('.song-artist').text(player.currentSong.artist);
         $('.seek-bar-ball').css('left',"0%");
         $('.seek-bar-progress').css('width',"0%");
+    };
+
+    player.setVolume = function() {
+        if(player.playingState == "Playing") {
+            var volume = $('.volume-bar').slider("option", "value");
+            console.log(volume);
+            player.playerElement.volume = volume/100;
+        }
     };
 
 

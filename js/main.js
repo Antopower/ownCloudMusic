@@ -50,6 +50,31 @@
 		});
 
 
+
+
+
+		$(".volume-bar").slider({
+			min: 0,
+			max: 100,
+			value: 50,
+			range: "min",
+			animate: true,
+			slide: function(event, ui) {
+				if(player.playingState == "Playing") {
+					player.setVolume();
+				}
+			},
+			change: function( event, ui ) {
+				if(player.playingState == "Playing") {
+					player.setVolume();
+			}}
+		});
+
+
+
+
+
+
 		// Fix the player lenght to the same as the content
 		$('.player-container').width($('#app-content-wrapper').width());
 		$(window).resize(function() {

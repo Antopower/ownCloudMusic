@@ -18,7 +18,10 @@
 			<i class="player-button shuffle fa fa-4x fa-random"></i>
 		</div>
 		<div class="player-right">
-			volume
+			<div class="volume-control">
+				<i class="fa fa-volume-up"></i>
+				<div class="volume-bar"></div>
+			</div>
 		</div>
 	</div>
 </div>
