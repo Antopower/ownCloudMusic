@@ -12,6 +12,11 @@
 
 	$(document).ready(function () {
 
+		// Play/Pause event
+		$('.player-button.play-pause').click(function(){
+			player.playPause();
+		});
+
 		// Fix the player lenght to the same as the content
 		$('.player-container').width($('#app-content-wrapper').width());
 		$(window).resize(function() {

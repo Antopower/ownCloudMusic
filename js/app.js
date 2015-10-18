@@ -39,21 +39,9 @@
                 load_track = $(this).attr('data-path');//gets me the url of the new track
                 $('.playing-song').removeClass('playing-song');
                 $(this).addClass('playing-song');
-                music.change_track(load_track);// function to change the track of the loaded audio player without page refresh preferred...
+                player.change_track(load_track);// function to change the track of the loaded audio player without page refresh preferred...
             });
         });
-    };
-
-    music.change_track = function (sourceUrl) {
-        var audio = $("#player");
-        $("#mp3-src").attr("src", "http://209.126.98.133/anto/owncloud/remote.php/webdav"+sourceUrl);
-        /****************/
-        audio[0].pause();
-        audio[0].load();//suspends and restores all audio element
-
-        //audio[0].play(); changed based on Sprachprofi's comment below
-        audio[0].oncanplaythrough = audio[0].play();
-        /****************/
     };
 
     music.add_time_played_counter = function (index) {
@@ -101,7 +89,7 @@
                 load_track = $(this).attr('data-path');//gets me the url of the new track
                 $('.playing-song').removeClass('playing-song');
                 $(this).addClass('playing-song');
-                music.change_track(load_track);// function to change the track of the loaded audio player without page refresh preferred...
+                player.change_track(load_track);// function to change the track of the loaded audio player without page refresh preferred...
             });
         });
     };
