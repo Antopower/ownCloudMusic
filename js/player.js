@@ -46,14 +46,17 @@
         }
     };
 
-    player.change_track = function (sourceUrl) {
+    player.change_track = function (file_id) {
         var audio = player.playerElement;
-        audio.setAttribute('src', 'http://209.126.98.133/anto/owncloud/remote.php/webdav'+sourceUrl);
+        player.currentSong = $.grep(music.musicList, function(e){ return e.file_id == file_id; })[0];
+        audio.setAttribute('src', 'http://209.126.98.133/anto/owncloud/remote.php/webdav' + player.currentSong.path);
         audio.pause();
         audio.load();//suspends and restores all audio element
         audio.oncanplaythrough = audio.play();
         player.playingState = "Playing";
         $('.player-button.play-pause').removeClass('fa-play').addClass('fa-pause');
+        $('.song-title').text(player.currentSong.title);
+        $('.song-artist').text(player.currentSong.artist);
     };
 
 

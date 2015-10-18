@@ -21,25 +21,25 @@
             response.data.songs.forEach( function (song)
             {
                 songlist += '<tr data-path="'+ song.path +'" data-index="' + songindex + '" data-id="' + song.file_id + '" class="song">';
-                songlist += '<td>'+ song.title +'</td>';
-                songlist += '<td>'+ song.artist +'</td>';
-                songlist += '<td>'+ song.album +'</td>';
-                songlist += '<td>'+ song.genre +'</td>';
-                songlist += '<td>'+ song.year +'</td>';
-                songlist += '<td>'+ parseInt(song.bitrate/1000) +'kbps</td>';
-                songlist += '<td>'+ song.play_time +'</td>';
-                songlist += '<td>'+ song.time_played +'</td>';
+                songlist += '<td class="songlist-title">'+ song.title +'</td>';
+                songlist += '<td class="songlist-artist">'+ song.artist +'</td>';
+                songlist += '<td class="songlist-album">'+ song.album +'</td>';
+                songlist += '<td class="songlist-genre">'+ song.genre +'</td>';
+                songlist += '<td class="songlist-year">'+ song.year +'</td>';
+                songlist += '<td class="songlist-bitrate">'+ parseInt(song.bitrate/1000) +'kbps</td>';
+                songlist += '<td class="songlist-playtime">'+ song.play_time +'</td>';
+                songlist += '<td class="songlist-timeplayed">'+ song.time_played +'</td>';
                 songlist += '</tr>';
                 songindex = songindex + 1;
             });
             songlist += '</tbody></table>';
             $('#songlist').html(songlist);
-
+            music.musicList = response.data.songs;
             $('tr.song').click(function(){
                 load_track = $(this).attr('data-path');//gets me the url of the new track
                 $('.playing-song').removeClass('playing-song');
                 $(this).addClass('playing-song');
-                player.change_track(load_track);// function to change the track of the loaded audio player without page refresh preferred...
+                player.change_track($(this).attr('data-id'));// function to change the track of the loaded audio player without page refresh preferred...
             });
         });
     };

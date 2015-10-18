@@ -17,14 +17,21 @@
     background-color: #e4e4e0;
 }
 .player-left {
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    width: 33%;
+    text-align: left;
 }
 .player-center {
     display: inline-block;
     vertical-align: top;
+    width: 33%;
 }
 .player-right {
-    float: right;
+    display: inline-block;
+    vertical-align: top;
+    width: 33%;
+    text-align: right;
 }
 .seek-bar-track {
     position: relative;
