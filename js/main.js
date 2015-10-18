@@ -66,5 +66,11 @@
 			music.add_time_played_counter(player.currentSong.file_id);
 			player.nextSong();
 		});
+
+		player.playerElement.ontimeupdate = function() {
+			var progress = ((player.playerElement.currentTime*100)/player.playerElement.duration).toFixed(2);
+			$('.seek-bar-ball').css('left',progress+"%");
+		};
+
 	});
 })(jQuery, OC);
