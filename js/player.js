@@ -1,21 +1,25 @@
 (function (player, $, OC) {
 
     player.playingState = "Stopped";
+    player.repeat = "0";
+    player.shuffle = false;
     player.playerElement = document.createElement('audio');
 
     player.nextSong = function() {
         if(player.playingState != "Stopped") {
-            var songPlaying = $('.playing-song');
-            music.add_time_played_counter(songPlaying.attr('data-id'));
-            var index = songPlaying.removeClass('playing-song').attr('data-index');
-            index++;
-            var newsong = $('.song[data-index="' + index +'"]').attr('data-id');
-            if(newsong == undefined) {
-                index = 0;
-                newsong = $('.song[data-index="' + index +'"]').attr('data-id');
+            if(player.repeat == "0") {
+                var index = $('.playing-song').removeClass('playing-song').attr('data-index');
+                index++;
+                if($('.song[data-index="' + index +'"]').attr('data-id') == undefined) {
+                    index = 0;
+                }
+                var newsong = $('.song[data-index="' + index +'"]').addClass('playing-song').attr('data-id');
+                player.change_track(newsong);
+            } else if(player.repeat == "1") {
+                player.playerElement.pause();
+                player.playerElement.load();//suspends and restores all audio element7
+                player.playerElement.oncanplaythrough = player.playerElement.play();
             }
-            $('.song[data-index="' + index +'"]').addClass('playing-song');
-            player.change_track(newsong);
         }
     };
 

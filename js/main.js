@@ -12,19 +12,30 @@
 
 	$(document).ready(function () {
 
-		// Play/Pause event
+		// Play/Pause button event
 		$('.player-button.play-pause').click(function(){
 			player.playPause();
 		});
 
-		// Play/Pause event
+		// Play/Pause button event
 		$('.player-button.backward').click(function(){
 			player.previousSong();
 		});
 
-		// Play/Pause event
+		// Play/Pause button event
 		$('.player-button.forward').click(function(){
 			player.nextSong();
+		});
+
+		// Repeat button event
+		$('.player-button.repeat').click(function(){
+			if(player.repeat == "0") {
+				player.repeat = "1";
+				$('.player-button.repeat').addClass('mpc');
+			} else if(player.repeat == "1") {
+				player.repeat = "0";
+				$('.player-button.repeat').removeClass('mpc');
+			}
 		});
 
 
@@ -40,7 +51,8 @@
 			music.show_music_files();
 		});
 
-		$("#player").on('ended', function() {
+		player.playerElement.on('ended', function() {
+			music.add_time_played_counter(player.currentSong.file_id);
 			player.nextSong();
 		});
 	});

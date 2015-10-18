@@ -4,6 +4,11 @@
 .mpbsc {
 	box-shadow: 1px 1px 13px #03A9F4;
 }
+.mpc {
+	color: #03A9F4;
+}
+
+
 #app-navigation {
 	z-index: 2;
 }
