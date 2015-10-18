@@ -1,5 +1,6 @@
 <?php
-script('musicapi', 'script');
+script('musicapi', 'main');
+script('musicapi', 'app');
 style('musicapi', 'style');
 ?>
 
