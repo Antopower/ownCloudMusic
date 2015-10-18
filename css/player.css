@@ -1,3 +1,49 @@
 .player-container {
     background-color: #ffffff;
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+}
+.playing-song {
+    background-color: #d3d3cf;
+}
+.player-interface {
+    text-align: center;
+}
+.player-interface .player-button {
+    padding: 5px;
+}
+.player-interface .player-button:hover {
+    background-color: #e4e4e0;
+}
+.player-left {
+    float: left;
+}
+.player-center {
+    display: inline-block;
+    vertical-align: top;
+}
+.player-right {
+    float: right;
+}
+.seek-bar-track {
+    position: relative;
+    width: 100%;
+    height: 5px;
+    background-color: #EFEFED;
+}
+.seek-bar-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+}
+.seek-bar-ball {
+    position: absolute;
+    top: -6px;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    border-radius: 16px;
+    cursor: pointer;
 }
