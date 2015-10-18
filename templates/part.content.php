@@ -1,3 +1,4 @@
+<div id="songlist"></div>
 <div class="player-container">
 	<div class="player-interface">
 		<i class="player-button fa fa-3x fa-backward"></i>
@@ -9,6 +10,4 @@
 			<source id="mp3-src" src="" type="audio/mpeg">
 		</audio>
 	</div>
-
 </div>
-<div id="songlist"></div>

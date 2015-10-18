@@ -17,3 +17,7 @@ tr.song:hover {
 .player-interface .player-button:hover {
 	background-color: #e4e4e0;
 }
+.player-container {
+	position: fixed;
+	bottom: 0;
+}
