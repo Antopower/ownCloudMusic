@@ -73,5 +73,16 @@
 			$('.seek-bar-ball').css('left',progress+"%");
 		};
 
+		player.playerElement.onprogress = function() {
+			if(player.playerElement.buffered.length > 0) {
+				var bufferedEnd = player.playerElement.buffered.end(player.playerElement.buffered.length - 1);
+				var duration =  player.playerElement.duration;
+				var progress = ((bufferedEnd*100)/duration).toFixed(2);
+				if (duration > 0) {
+					$('.seek-bar-progress-buffered').css('width',progress+"%");
+				}
+			}
+		};
+
 	});
 })(jQuery, OC);

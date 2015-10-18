@@ -1,6 +1,7 @@
 <div id="songlist"></div>
 <div class="player-container mpbsc noselect">
 	<div class="seek-bar-track">
+		<div class="seek-bar-progress-buffered"></div>
 		<div class="seek-bar-progress mpbc"></div>
 		<div class="seek-bar-ball mpbc"></div>
 	</div>
