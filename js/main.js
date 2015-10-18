@@ -17,6 +17,17 @@
 			player.playPause();
 		});
 
+		// Play/Pause event
+		$('.player-button.backward').click(function(){
+			player.previousSong();
+		});
+
+		// Play/Pause event
+		$('.player-button.forward').click(function(){
+			player.nextSong();
+		});
+
+
 		// Fix the player lenght to the same as the content
 		$('.player-container').width($('#app-content-wrapper').width());
 		$(window).resize(function() {
@@ -30,17 +41,7 @@
 		});
 
 		$("#player").on('ended', function() {
-			var songPlaying = $('.playing-song');
-			music.add_time_played_counter(songPlaying.attr('data-id'));
-			var index = songPlaying.removeClass('playing-song').attr('data-index');
-			index++;
-			var newsong = $('.song[data-index="' + index +'"]').attr('data-path');
-			if(newsong == undefined) {
-				index = 0;
-				newsong = $('.song[data-index="' + index +'"]').attr('data-path');
-			}
-			$('.song[data-index="' + index +'"]').addClass('playing-song');
-			music.change_track(newsong);
+			player.nextSong();
 		});
 	});
 })(jQuery, OC);

@@ -4,11 +4,34 @@
     player.playerElement = document.createElement('audio');
 
     player.nextSong = function() {
-        alert('Next song!');
+        if(player.playingState != "Stopped") {
+            var songPlaying = $('.playing-song');
+            music.add_time_played_counter(songPlaying.attr('data-id'));
+            var index = songPlaying.removeClass('playing-song').attr('data-index');
+            index++;
+            var newsong = $('.song[data-index="' + index +'"]').attr('data-id');
+            if(newsong == undefined) {
+                index = 0;
+                newsong = $('.song[data-index="' + index +'"]').attr('data-id');
+            }
+            $('.song[data-index="' + index +'"]').addClass('playing-song');
+            player.change_track(newsong);
+        }
     };
 
     player.previousSong = function() {
-        alert('Previous song!');
+        if(player.playingState != "Stopped") {
+            var songPlaying = $('.playing-song');
+            var index = songPlaying.removeClass('playing-song').attr('data-index');
+            index--;
+            var newsong = $('.song[data-index="' + index +'"]').attr('data-id');
+            if(newsong == undefined) {
+                index =  $('.song').size()-1;
+                newsong = $('.song[data-index="' + index +'"]').attr('data-id');
+            }
+            $('.song[data-index="' + index +'"]').addClass('playing-song');
+            player.change_track(newsong);
+        }
     };
 
     player.playPause = function() {
@@ -20,8 +43,6 @@
             $('.player-button.play-pause').removeClass('fa-pause').addClass('fa-play');
             player.playingState = "Paused";
             player.playerElement.pause();
-        } else {
-            return;
         }
     };
 
