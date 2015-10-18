@@ -38,6 +38,17 @@
 			}
 		});
 
+		// Shuffle button event
+		$('.player-button.shuffle').click(function(){
+			if(player.shuffle) {
+				player.shuffle = false;
+				$('.player-button.shuffle').removeClass('mpc');
+			} else {
+				player.shuffle = true;
+				$('.player-button.shuffle').addClass('mpc');
+			}
+		});
+
 
 		// Fix the player lenght to the same as the content
 		$('.player-container').width($('#app-content-wrapper').width());
@@ -51,7 +62,7 @@
 			music.show_music_files();
 		});
 
-		player.playerElement.on('ended', function() {
+		$(player.playerElement).on('ended', function() {
 			music.add_time_played_counter(player.currentSong.file_id);
 			player.nextSong();
 		});

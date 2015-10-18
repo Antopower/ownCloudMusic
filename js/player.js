@@ -9,11 +9,18 @@
         if(player.playingState != "Stopped") {
             if(player.repeat == "0") {
                 var index = $('.playing-song').removeClass('playing-song').attr('data-index');
-                index++;
-                if($('.song[data-index="' + index +'"]').attr('data-id') == undefined) {
-                    index = 0;
+                if(player.shuffle) {
+                    index = Math.floor((Math.random() * $('.song').size()) + 0);
+                    console.log($('.song').size());
+                    console.log(index);
+                    var newsong = $('.song[data-index="' + index +'"]').addClass('playing-song').attr('data-id');
+                } else {
+                    index++;
+                    if($('.song[data-index="' + index +'"]').attr('data-id') == undefined) {
+                        index = 0;
+                    }
+                    var newsong = $('.song[data-index="' + index +'"]').addClass('playing-song').attr('data-id');
                 }
-                var newsong = $('.song[data-index="' + index +'"]').addClass('playing-song').attr('data-id');
                 player.change_track(newsong);
             } else if(player.repeat == "1") {
                 player.playerElement.pause();
