@@ -69,6 +69,7 @@
 
 		player.playerElement.ontimeupdate = function() {
 			var progress = ((player.playerElement.currentTime*100)/player.playerElement.duration).toFixed(2);
+			$('.seek-bar-progress').css('width',progress+"%");
 			$('.seek-bar-ball').css('left',progress+"%");
 		};
 
