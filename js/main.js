@@ -49,14 +49,10 @@
 			}
 		});
 
-
-
-
-
 		$(".volume-bar").slider({
 			min: 0,
 			max: 100,
-			value: 50,
+			value: 100,
 			range: "min",
 			animate: true,
 			slide: function(event, ui) {
@@ -69,11 +65,6 @@
 					player.setVolume();
 			}}
 		});
-
-
-
-
-
 
 		// Fix the player lenght to the same as the content
 		$('.player-container').width($('#app-content-wrapper').width());
@@ -108,6 +99,6 @@
 				}
 			}
 		};
-
+		$('.song-title').marquee();
 	});
 })(jQuery, OC);

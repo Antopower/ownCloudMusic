@@ -69,7 +69,7 @@
         player.playingState = "Playing";
         player.setVolume();
         $('.player-button.play-pause').removeClass('fa-play').addClass('fa-pause');
-        $('.song-title').text(player.currentSong.title);
+        $('.scrolling-text .song-title').text(player.currentSong.title);
         $('.song-artist').text(player.currentSong.artist);
         $('.seek-bar-ball').css('left',"0%");
         $('.seek-bar-progress').css('width',"0%");

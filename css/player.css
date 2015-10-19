@@ -22,12 +22,24 @@
     width: 33%;
     text-align: left;
 }
+.song-title {
+    position: relative;
+    font-size: 21px;
+    white-space: nowrap;
+    padding-top: 8px;
+    height: 10px;
+}
+.song-artist {
+    font-size: 18px;
+}
 .player-center {
+    background-color: #ffffff;
     display: inline-block;
     vertical-align: top;
     width: 33%;
 }
 .player-right {
+    background-color: #ffffff;
     display: inline-block;
     vertical-align: top;
     width: 33%;
@@ -95,4 +107,23 @@
     width: 20px;
     margin-top: -2px;
     cursor: pointer;
+}
+.scrolling-text {
+    height: 24px;
+    width: 100%;
+    margin-top: 7px;
+}
+@media (max-width: 500px) {
+    .player-left {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    .player-center {
+        display: block;
+        width: 100%;
+    }
+    .player-right {
+        display: none;
+    }
 }

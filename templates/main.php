@@ -2,6 +2,7 @@
 script('musicapi', 'main');
 script('musicapi', 'app');
 script('musicapi', 'player');
+script('musicapi', 'marques');
 style('musicapi', 'style');
 style('musicapi', 'player');
 ?>
