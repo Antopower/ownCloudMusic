@@ -97,11 +97,9 @@
     background: #EFEFED;
 }
 .ui-slider-range {
-    background: #03A9F4;
     border-radius: 5px;
 }
 .volume-bar .ui-slider-handle {
-    background: #03A9F4;
     border: none;
     border-radius: 10px;
     height: 20px;
@@ -117,7 +115,6 @@
 .current-time {
     position: absolute;
     top: -27px;
-    background-color: #03A9F4;
     height: 28px;
     padding: 3px 9px 3px 6px;
     border-radius: 0 11px 0 0;
@@ -129,7 +126,6 @@
     position: absolute;
     top: -27px;
     right: 0;
-    background-color: #03A9F4;
     height: 28px;
     padding: 3px 9px 3px 6px;
     border-radius: 11px 0 0 0;
