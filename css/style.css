@@ -1,17 +1,17 @@
 .mpbc {
-	background-color: #161765;
+	background-color: #03A9F4;
 }
 .mpbsc {
-	box-shadow: 1px 1px 13px #161765;
+	box-shadow: 1px 1px 13px #03A9F4;
 }
 .mpc {
-	color: #161765;
+	color: #03A9F4;
 }
 .ui-slider-range {
-	background: #161765;
+	background: #03A9F4;
 }
 .volume-bar .ui-slider-handle {
-	background: #161765;
+	background: #03A9F4;
 }
 
 #app-navigation {
