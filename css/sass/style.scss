@@ -1,4 +1,8 @@
 $primary-color: #03A9F4;
+$lighter-color: darken( rgba( $primary-color, .1 ), 10% );
+$light-color: darken( rgba( $primary-color, .3 ), 10% );
+
+@import 'player.css';
 
 .mpbc {
 	background-color: $primary-color;
@@ -19,11 +23,14 @@ $primary-color: #03A9F4;
 #app-navigation {
 	z-index: 2;
 }
+.playing-song {
+  background-color: $light-color;
+}
 tr.song {
 	height: 35px;
 }
 tr.song:hover {
-	background-color: #e4e4e0;
+	background-color: $lighter-color;
 }
 tr.song td {
 	border-bottom: 1px solid #eee;

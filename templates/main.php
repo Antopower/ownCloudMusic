@@ -4,7 +4,6 @@ script('musicapi', 'app');
 script('musicapi', 'player');
 script('musicapi', 'marques');
 style('musicapi', 'style');
-style('musicapi', 'player');
 ?>
 
 <div id="app">

@@ -4,9 +4,6 @@
     position: fixed;
     bottom: 0;
 }
-.playing-song {
-    background-color: #d3d3cf;
-}
 .player-interface {
     text-align: center;
 }
