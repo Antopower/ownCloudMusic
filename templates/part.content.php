@@ -21,7 +21,7 @@
 		</div>
 		<div class="player-right">
 			<div class="volume-control">
-				<i class="fa fa-volume-up"></i>
+				<i class="volume-button fa fa-volume-up"></i>
 				<div class="volume-bar"></div>
 			</div>
 		</div>

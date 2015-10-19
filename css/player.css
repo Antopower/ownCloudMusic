@@ -85,10 +85,11 @@
     display: inline-block;
     padding-top: 13px;
 }
-.volume-control .fa-volume-up {
+.volume-control .volume-button {
     display: inline-block;
     font-size: 32px;
     vertical-align: sub;
+    width: 32px;
 }
 .volume-bar {
     border: 1px solid #D0D0C9;

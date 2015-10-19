@@ -49,6 +49,18 @@
 			}
 		});
 
+		// Mute button event
+		$('.volume-control .volume-button').click(function(){
+			console.log('TEST');
+			if($(this).hasClass('fa-volume-up')) {
+				$('.volume-control .volume-button').removeClass('fa-volume-up').addClass('fa-volume-off');
+				player.playerElement.volume = 0;
+			} else {
+				$('.volume-control .volume-button').removeClass('fa-volume-off').addClass('fa-volume-up');
+				player.setVolume();
+			}
+		});
+
 		$(".volume-bar").slider({
 			min: 0,
 			max: 100,
