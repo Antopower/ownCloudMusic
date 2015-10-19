@@ -87,6 +87,8 @@
 			var progress = ((player.playerElement.currentTime*100)/player.playerElement.duration).toFixed(2);
 			$('.seek-bar-progress').css('width',progress+"%");
 			$('.seek-bar-ball').css('left',progress+"%");
+			$('.current-time').text(music.second_to_duration(player.playerElement.currentTime.toFixed(0)));
+			$('.duration-time').text(music.second_to_duration(player.playerElement.duration.toFixed(0)));
 		};
 
 		player.playerElement.onprogress = function() {

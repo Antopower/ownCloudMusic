@@ -1,9 +1,11 @@
 <div id="songlist"></div>
 <div class="player-container mpbsc noselect">
 	<div class="seek-bar-track">
+		<div class="current-time">00:00</div>
 		<div class="seek-bar-progress-buffered"></div>
 		<div class="seek-bar-progress mpbc"></div>
 		<div class="seek-bar-ball mpbc"></div>
+		<div class="duration-time">00:00</div>
 	</div>
 	<div class="player-interface">
 		<div class="player-left">
