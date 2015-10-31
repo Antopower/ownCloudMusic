@@ -4,7 +4,7 @@
         var url = OC.generateUrl('/apps/musicapi/getmusic');
         var data = {};
         $.post(url, data).success(function (response) {
-            music.render_songlist(response);
+            music.render_songlist(response.data.songs);
         });
     };
 
@@ -18,7 +18,9 @@
         var url = OC.generateUrl('/apps/musicapi/scandrivemusic');
         var data = {};
         $.post(url, data).success(function (response) {
-            music.render_songlist(response);
+            if (response.success == true) {
+                music.get_music();
+            }
         });
     };
 
@@ -53,7 +55,7 @@
             '<th>Time played</th>' +
             '</thead>'+
             '<tbody>';
-        response.data.songs.forEach( function (song)
+        response.forEach( function (song)
         {
             songlist += '<tr data-index="' + songindex + '" data-id="' + song.file_id + '" class="song">';
             songlist += '<td class="songlist-title">'+ song.title +'</td>';
@@ -69,7 +71,7 @@
         });
         songlist += '</tbody></table>';
         $('#songlist').html(songlist);
-        music.musicList = response.data.songs;
+        music.musicList = response;
         $('tr.song').click(function(){
             load_track = $(this).attr('data-path');//gets me the url of the new track
             $('.playing-song').removeClass('playing-song');
