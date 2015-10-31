@@ -2,7 +2,7 @@ $primary-color: #03A9F4;
 $lighter-color: darken( rgba( $primary-color, .1 ), 10% );
 $light-color: darken( rgba( $primary-color, .3 ), 10% );
 
-@import 'player.css';
+@import 'player';
 
 .mpbc {
 	background-color: $primary-color;
