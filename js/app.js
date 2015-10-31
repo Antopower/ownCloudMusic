@@ -14,7 +14,7 @@
         $.post(url, data).success(function (response) {});
     };
 
-    music.show_music_files = function () {
+    music.scan_music = function () {
         var url = OC.generateUrl('/apps/musicapi/scandrivemusic');
         var data = {};
         $.post(url, data).success(function (response) {

@@ -87,7 +87,7 @@
 		music.get_music();
 
 		$('#music-scan').click(function () {
-			music.show_music_files();
+			music.scan_music();
 		});
 
 		$(player.playerElement).on('ended', function() {
