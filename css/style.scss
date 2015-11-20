@@ -19,7 +19,6 @@ $light-color: darken( rgba( $primary-color, .3 ), 10% );
 .volume-bar .ui-slider-handle {
 	background: $primary-color;
 }
-
 #app-navigation {
 	z-index: 2;
 }
@@ -41,7 +40,7 @@ tr.song td {
 	padding-left: 10px;
 }
 #songlist {
-	padding: 2px;
+	padding: 2px 2px 66px 2px;
 }
 .noselect {
 	-webkit-touch-callout: none;
@@ -51,14 +50,6 @@ tr.song td {
 	-ms-user-select: none;
 	user-select: none;
 }
-
-
-
-
-
-
-
-
 .scroll-left {
 	position: absolute;
 	width: 100%;
