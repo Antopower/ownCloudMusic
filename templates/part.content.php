@@ -1,14 +1,29 @@
-<div class="player-container">
-	<div class="player-interface">
-		<i class="player-button fa fa-3x fa-backward"></i>
-		<i class="player-button fa fa-3x fa-play"></i>
-		<i class="player-button fa fa-3x fa-pause"></i>
-		<i class="player-button fa fa-3x fa-forward"></i>
-		<br/>
-		<audio id="player" controls>
-			<source id="mp3-src" src="" type="audio/mpeg">
-		</audio>
-	</div>
-
-</div>
 <div id="songlist"></div>
+<div class="player-container mpbsc noselect">
+	<div class="seek-bar-track">
+		<div class="current-time mpbc">00:00</div>
+		<div class="seek-bar-progress-buffered"></div>
+		<div class="seek-bar-progress mpbc"></div>
+		<div class="seek-bar-ball mpbc"></div>
+		<div class="duration-time mpbc">00:00</div>
+	</div>
+	<div class="player-interface">
+		<div class="player-left">
+			<div class="song-title"></div>
+			<div class="song-artist"></div>
+		</div>
+		<div class="player-center">
+			<i class="player-button repeat fa fa-4x fa-refresh"></i>
+			<i class="player-button backward fa fa-4x fa-backward"></i>
+			<i class="player-button play-pause fa fa-4x fa-play"></i>
+			<i class="player-button forward fa fa-4x fa-forward"></i>
+			<i class="player-button shuffle fa fa-4x fa-random"></i>
+		</div>
+		<div class="player-right">
+			<div class="volume-control">
+				<i class="volume-button fa fa-volume-up"></i>
+				<div class="volume-bar"></div>
+			</div>
+		</div>
+	</div>
+</div>

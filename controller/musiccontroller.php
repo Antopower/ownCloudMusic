@@ -111,8 +111,8 @@ class MusicController extends Controller {
             if(\OC\Files\Filesystem::file_exists($path)){
                 $row['path'] = $path;
                 $aSongs[] = $row;
-            }else{
-                //$this->deleteFromDB($row['id'],$row['album_id'],$row['artist_id'],$row['file_id']);
+            } else {
+                $this->_deleteFromDB($row['id'],$row['path'],$row['file_id']);
             }
 
         }
@@ -121,5 +121,10 @@ class MusicController extends Controller {
         }else{
             return false;
         }
+    }
+
+    private function _deleteFromDB($Id,$path,$fileId) {
+        $stmt = \OCP\DB::prepare( 'DELETE FROM `*PREFIX*music` WHERE `user_id` = ? AND `id` = ? AND `path` = ? AND `file_id` = ?');
+        $result = $stmt->execute(array($this->userId, $Id, $path, $fileId));
     }
 }
