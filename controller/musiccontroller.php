@@ -71,6 +71,67 @@ class MusicController extends Controller {
     }
 
     /**
+     * Get the music from the database
+     * @return id
+     * @internal param $streamingUrl
+     * @internal param $interval
+     * @internal param int $offset
+     * @internal param bool $headers
+     */
+    public function getRadioSongDetail(){
+        $streamingUrl = $this -> params('streamUrl');
+        $needle = 'StreamTitle=';
+        $interval = 19200;
+        $ua = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36';
+
+        $opts = [
+            'http' => [
+                'method' => 'GET',
+                'header' => 'Icy-MetaData: 1',
+                'user_agent' => $ua
+            ]
+        ];
+
+        if (($headers = get_headers($streamingUrl))) {
+            foreach ($headers as $h) {
+                if (strpos(strtolower($h), 'icy-metaint') !== false && ($interval = explode(':', $h)[1])) {
+                    break;
+                }
+            }
+        }
+
+        $context = stream_context_create($opts);
+
+        $result=[
+            'success' => false,
+            'data' => ['songTitle'=>'Unknown']
+        ];
+
+        if ($stream = fopen($streamingUrl, 'r', false, $context)) {
+            $buffer = stream_get_contents($stream, $interval, 0);
+            fclose($stream);
+            if (strpos($buffer, $needle) !== false) {
+                $title = explode($needle, $buffer)[1];
+                $title = substr($title, 1, strpos($title, ';') - 2);
+                $result=[
+                    'success' => true,
+                    'data' => ['songTitle'=>$title]
+                ];
+            } else {
+                //self::getRadioSongDetail($streamingUrl, $interval, $offset + $interval, false);
+            }
+        } else {
+            $result=[
+                'success' => false,
+                'data' => ['songTitle'=>'Unknown - Cannot get information']
+            ];
+        }
+        $response = new JSONResponse();
+        $response -> setData($result);
+        return $response;
+    }
+
+    /**
      * return the music from the database
      *
      * @return songArray
