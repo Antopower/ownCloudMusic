@@ -91,30 +91,45 @@
 			music.scan_music();
 		});
 
+		// Internet radio modal
 		$('#internet-radio').click(function () {
 			modal_init();
-			$('.radio-modal').css('display','block');
+			$('.radio-modal').css('display','inline-block');
+			$(window).resize();
+			$('#radio-url').focus();
 		});
 
-		$('.modal-cancel').click(function () {
-			modal_close();
-		});
-
+		// Internet radio modal GO
 		$('.radio-go-btn').click(function () {
 			player.play_radio($('.radio-modal input').val());
 			modal_close();
 		});
 
-		// Modal function
+		// Modal cancel
+		$('.modal-cancel').click(function () {
+			modal_close();
+		});
+
+		// Modal init function
 		var modal_init = function() {
-			$('#app-modal').css('display','block');
-			$('#app-modal-wrapper').css('display','block');
+			$('#app-modal').css('display','inline-block').addClass('modal-opened');
+			$('#app-modal-wrapper').css('display','inline-block');
 		};
 
 		var modal_close = function() {
-			$('#app-modal').css('display','none');
+			$('#app-modal').css('display','none').removeClass('modal-opened');;
 			$('.music-app-modal').css('display','none');
 		};
+
+		$(window).resize(function(){
+			if ($('#app-modal').hasClass('modal-opened')) {
+				$('#app-modal-wrapper').css({
+					position:'absolute',
+					left: ($(window).width() - $('#app-modal-wrapper').outerWidth())/2,
+					top: (($(window).height() - $('#app-modal-wrapper').outerHeight())/2) - $('#header').outerHeight()
+				});
+			}
+		});
 
 		$(player.playerElement).on('ended', function() {
 			music.add_time_played_counter(player.currentSong.file_id);

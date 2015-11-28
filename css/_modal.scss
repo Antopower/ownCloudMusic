@@ -1,5 +1,7 @@
+// General Layout
 #app-modal {
   display: none;
+  text-align: center;
   position: absolute;
   top: 0;
   width: 100%;
@@ -8,12 +10,15 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 #app-modal-wrapper {
-  position: absolute;
-  top: 45%;
-  right: 45%;
   background-color: white;
   padding: 7px;
 }
-#radio-modal {
+
+// Radio Modal
+.radio-modal {
   display: none;
+  min-width: 275px;
+}
+.radio-modal #radio-url {
+  width: 100%;
 }
