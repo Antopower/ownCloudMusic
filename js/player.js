@@ -1,9 +1,11 @@
 (function (player, $, OC) {
 
     player.playingState = "Stopped";
+    player.RadioState = "Stopped";
     player.repeat = "0";
     player.shuffle = false;
     player.playerElement = document.createElement('audio');
+    player.radioInterval = false;
 
     player.nextSong = function() {
         if(player.playingState != "Stopped") {
@@ -67,6 +69,11 @@
         audio.load();//suspends and restores all audio element
         audio.play();
         player.playingState = "Playing";
+        player.RadioState = "Stopped";
+        if(player.radioInterval != false) {
+            clearInterval(player.radioInterval);
+            player.radioInterval = false;
+        }
         player.setVolume();
         $('.player-button.play-pause').removeClass('fa-play').addClass('fa-pause');
         $('.scrolling-text .song-title').text(player.currentSong.title);
@@ -85,14 +92,15 @@
         audio.load();//suspends and restores all audio element
         audio.play();
         player.playingState = "Playing";
+        player.RadioState = "Playing";
         player.setVolume();
         $('.player-button.play-pause').removeClass('fa-play').addClass('fa-pause');
-        //$('.scrolling-text .song-title').text(player.currentSong.title);
-        //$('.song-artist').text(player.currentSong.artist);
-        //$('.seek-bar-ball').css('left',"0%");
-        //$('.seek-bar-progress').css('width',"0%");
-        //$('.current-time').text(music.second_to_duration(player.playerElement.currentTime.toFixed(0)));
-        //$('.duration-time').text(music.second_to_duration(player.playerElement.duration.toFixed(0)));
+        music.get_radio_song_information(url);
+        if(player.radioInterval != false) {
+            clearInterval(player.radioInterval);
+        }
+        player.radioInterval = setInterval(function(){ music.get_radio_song_information(url) }, 30000);
+        $('.duration-time').text('00:00');
     };
 
     player.setVolume = function() {
@@ -101,6 +109,5 @@
             player.playerElement.volume = volume/100;
         }
     };
-
 
 }( window.player = window.player || {}, jQuery, OC ));
