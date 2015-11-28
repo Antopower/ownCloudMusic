@@ -17,4 +17,10 @@ style('musicapi', 'style');
 			<?php print_unescaped($this->inc('part.content')); ?>
 		</div>
 	</div>
+
+	<div id="app-modal">
+		<div id="app-modal-wrapper">
+			<?php print_unescaped($this->inc('part.modal')); ?>
+		</div>
+	</div>
 </div>

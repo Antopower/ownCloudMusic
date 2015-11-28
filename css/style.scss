@@ -3,6 +3,7 @@ $lighter-color: darken( rgba( $primary-color, .1 ), 10% );
 $light-color: darken( rgba( $primary-color, .3 ), 10% );
 
 @import 'player';
+@import 'modal';
 
 .mpbc {
 	background-color: $primary-color;
