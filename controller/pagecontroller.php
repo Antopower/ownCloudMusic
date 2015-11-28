@@ -40,12 +40,18 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function index() {
-		//$params = ['user' => $this->userId];
-		//$params = $this->scanDriveMusic();
-		/*echo '<pre>';
-		var_dump($params);
-		echo '</pre>';
-		die;*/
-		return new TemplateResponse('musicapi', 'main');  // templates/main.php
+
+		$csp = new \OCP\AppFramework\Http\ContentSecurityPolicy();
+		$csp->addAllowedStyleDomain('data:');
+		$csp->addAllowedImageDomain('\'self\'');
+		$csp->addAllowedImageDomain('data:');
+		$csp->addAllowedMediaDomain('*');
+
+		$csp->addAllowedFrameDomain('*');
+
+
+		$response = new TemplateResponse('musicapi', 'main');
+		$response->setContentSecurityPolicy($csp);
+		return $response;
 	}
 }
