@@ -86,9 +86,35 @@
 
 		music.get_music();
 
+		// Menu Buttons
 		$('#music-scan').click(function () {
 			music.scan_music();
 		});
+
+		$('#internet-radio').click(function () {
+			modal_init();
+			$('.radio-modal').css('display','block');
+		});
+
+		$('.modal-cancel').click(function () {
+			modal_close();
+		});
+
+		$('.radio-go-btn').click(function () {
+			player.play_radio($('.radio-modal input').val());
+			modal_close();
+		});
+
+		// Modal function
+		var modal_init = function() {
+			$('#app-modal').css('display','block');
+			$('#app-modal-wrapper').css('display','block');
+		};
+
+		var modal_close = function() {
+			$('#app-modal').css('display','none');
+			$('.music-app-modal').css('display','none');
+		};
 
 		$(player.playerElement).on('ended', function() {
 			music.add_time_played_counter(player.currentSong.file_id);

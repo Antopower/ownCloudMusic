@@ -77,6 +77,24 @@
         $('.duration-time').text(music.second_to_duration(player.playerElement.duration.toFixed(0)));
     };
 
+    player.play_radio = function (url) {
+        var audio = player.playerElement;
+        audio.setAttribute('preload', 'none');
+        audio.setAttribute('src', url);
+        audio.pause();
+        audio.load();//suspends and restores all audio element
+        audio.play();
+        player.playingState = "Playing";
+        player.setVolume();
+        $('.player-button.play-pause').removeClass('fa-play').addClass('fa-pause');
+        //$('.scrolling-text .song-title').text(player.currentSong.title);
+        //$('.song-artist').text(player.currentSong.artist);
+        //$('.seek-bar-ball').css('left',"0%");
+        //$('.seek-bar-progress').css('width',"0%");
+        //$('.current-time').text(music.second_to_duration(player.playerElement.currentTime.toFixed(0)));
+        //$('.duration-time').text(music.second_to_duration(player.playerElement.duration.toFixed(0)));
+    };
+
     player.setVolume = function() {
         if(player.playingState == "Playing" && $('.volume-control .volume-button').hasClass('fa-volume-up')) {
             var volume = $('.volume-bar').slider("option", "value");
