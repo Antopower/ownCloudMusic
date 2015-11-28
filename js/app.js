@@ -24,6 +24,16 @@
         });
     };
 
+    music.get_radio_song_information = function (streamUrl) {
+        var url = OC.generateUrl('/apps/musicapi/getradiosongdetail');
+        var data = {streamUrl: streamUrl};
+        $.post(url, data).success(function (response) {
+            if (response.success == true) {
+                jQuery('.song-title').text(response.data.songTitle);
+            }
+        });
+    };
+
     music.second_to_duration = function (second) {
         if(second == 'NaN') {
             minutes = '00';
