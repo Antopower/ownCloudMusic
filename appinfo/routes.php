@@ -23,5 +23,6 @@ return [
 	    ['name' => 'scanner#scandrivemusic', 'url' => '/scandrivemusic', 'verb' => 'POST'],
         ['name' => 'music#getmusic', 'url' => '/getmusic', 'verb' => 'POST'],
         ['name' => 'music#addtimeplayed', 'url' => '/addtimeplayed', 'verb' => 'POST'],
+        ['name' => 'music#getRadioSongDetail', 'url' => '/getradiosongdetail', 'verb' => 'POST'],
     ]
 ];
