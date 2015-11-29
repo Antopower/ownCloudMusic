@@ -8,6 +8,10 @@
         </div>
     </div>
     <div>
+        <label>Do not get song information: </label>
+        <input id="radio-chk-info" name="radio-chk-info" type="checkbox">
+    </div>
+    <div>
         <label for="radio-url">Url: </label>
         <input id="radio-url" name="radio-url" type="text">
     </div>

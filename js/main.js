@@ -107,7 +107,7 @@
 
 		// Internet radio modal GO
 		$('.radio-go-btn').click(function () {
-			music.get_radio_song_information($('.radio-modal input').val(),true);
+			music.get_radio_song_information($('.radio-modal #radio-url').val(),true);
 		});
 
 		// Modal cancel

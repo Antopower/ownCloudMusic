@@ -95,7 +95,8 @@
         $('.duration-time').text(music.second_to_duration(player.playerElement.duration.toFixed(0)));
     };
 
-    player.play_radio = function (url) {
+    player.play_radio = function (url,skip) {
+        skip = skip || false;
         var audio = player.playerElement;
         audio.setAttribute('preload', 'none');
         audio.setAttribute('src', url);
@@ -108,11 +109,16 @@
         player.disable_button();
         $('.player-button.play-pause').removeClass('fa-play').removeClass('fa-pause').addClass('fa-stop');
         $('.playing-song').removeClass('playing-song');
-        music.get_radio_song_information(url);
         if(player.radioInterval != false) {
             clearInterval(player.radioInterval);
         }
-        player.radioInterval = setInterval(function(){ music.get_radio_song_information(url) }, 30000);
+        if (!skip) {
+            music.get_radio_song_information(url);
+            player.radioInterval = setInterval(function(){ music.get_radio_song_information(url) }, 30000);
+        } else {
+            jQuery('.song-title').text('Unknown - Skip mode is enabled');
+        }
+
         $('.duration-time').text('00:00');
         $('.song-artist').text('');
     };
