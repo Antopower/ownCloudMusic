@@ -109,21 +109,25 @@ class MusicController extends Controller {
 
         if ($stream = fopen($streamingUrl, 'r', false, $context)) {
             $buffer = stream_get_contents($stream, $interval, 0);
+
             fclose($stream);
             if (strpos($buffer, $needle) !== false) {
                 $title = explode($needle, $buffer)[1];
                 $title = substr($title, 1, strpos($title, ';') - 2);
                 $result=[
                     'success' => true,
-                    'data' => ['songTitle'=>$title]
+                    'data' => ['songTitle'=>$title, 'error' => 'none']
                 ];
             } else {
-                //self::getRadioSongDetail($streamingUrl, $interval, $offset + $interval, false);
+                $result=[
+                    'success' => true,
+                    'data' => ['songTitle'=>'Unknown - No information found', 'error' => 'none']
+                ];
             }
         } else {
             $result=[
                 'success' => false,
-                'data' => ['songTitle'=>'Unknown - Cannot get information']
+                'data' => ['songTitle'=>'Unknown', 'error' => 'URL is wrong or radio do not exist. Check your URL.']
             ];
         }
         $response = new JSONResponse();
