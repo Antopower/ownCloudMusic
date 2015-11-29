@@ -190,11 +190,36 @@
 
 .radio-modal {
     display: none;
-    min-width: 275px;
+    width: 275px;
 }
 
 .radio-modal #radio-url {
-    width: 100%;
+    width: 87%;
+}
+
+.radio-modal-error {
+    color: #DE2121;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.radio-modal-title {
+    font-size: 30px;
+    line-height: 24px;
+    padding: 9px;
+}
+
+.radio-modal-compatible-container {
+    text-align: left;
+    padding: 5px;
+}
+
+.radio-modal-compatible-title {
+    font-weight: bold;
+}
+
+.radio-modal-compatible {
+    font-size: 11px;
 }
 
 .mpbc {
