@@ -5,6 +5,6 @@
 		></button>
 	</div>
 	<div id="app-settings-content">
-		<!-- Your settings in here -->
+		<li><a id="setting-internet-radio" href="#">Enable internet radio <span style="color: #DE2121;">(BETA)</span></a></li>
 	</div>
 </div>

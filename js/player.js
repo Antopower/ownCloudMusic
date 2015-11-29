@@ -51,10 +51,11 @@
         if (player.RadioState == 'Playing') {
             $('.player-button.play-pause').removeClass('fa-stop').removeClass('fa-pause').addClass('fa-play');
             player.RadioState = 'Paused';
-            player.playerElement.load();
+            player.playerElement.pause();
         } else if (player.RadioState == 'Paused') {
             $('.player-button.play-pause').removeClass('fa-play').removeClass('fa-pause').addClass('fa-stop');
             player.RadioState = 'Playing';
+            player.playerElement.load();
             player.playerElement.play();
         } else {
             if(player.playingState == "Paused") {
@@ -142,7 +143,7 @@
         $('.player-button.forward').css('color','');
         $('.player-button.repeat').css('color','');
         $('.player-button.shuffle').css('color','');
-        $('.player-button.play').css('color','');
+        $('.player-button.play-pause').css('color','');
     };
 
 }( window.player = window.player || {}, jQuery, OC ));

@@ -23,6 +23,9 @@ $light-color: darken( rgba( $primary-color, .3 ), 10% );
 #app-navigation {
 	z-index: 2;
 }
+#menu-internet-radio {
+  display: none;
+}
 .playing-song {
   background-color: $light-color;
 }

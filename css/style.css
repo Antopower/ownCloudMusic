@@ -246,6 +246,10 @@
     z-index: 2;
 }
 
+#menu-internet-radio {
+    display: none;
+}
+
 .playing-song {
     background-color: rgba(2, 134, 194, 0.3);
 }
