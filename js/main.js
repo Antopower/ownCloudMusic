@@ -84,6 +84,12 @@
 			$('.player-container').width($('#app-content-wrapper').width());
 		});
 
+		$(player.playerElement).on("error", function (e) {
+			$('.player-button.play-pause').css('color','#D6D6D6');
+			$('.radio-modal-error').text('This source is not compatible with the player.');
+			$('#internet-radio').click();
+		});
+
 		music.get_music();
 
 		// Menu Buttons
@@ -101,13 +107,13 @@
 
 		// Internet radio modal GO
 		$('.radio-go-btn').click(function () {
-			player.play_radio($('.radio-modal input').val());
-			modal_close();
+			music.get_radio_song_information($('.radio-modal input').val(),true);
 		});
 
 		// Modal cancel
 		$('.modal-cancel').click(function () {
 			modal_close();
+			$('.radio-modal-error').text('');
 		});
 
 		// Modal init function

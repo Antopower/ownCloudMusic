@@ -24,18 +24,27 @@
         });
     };
 
-    music.get_radio_song_information = function (streamUrl) {
+    music.get_radio_song_information = function (streamUrl, initialCheck) {
+        initialCheck = initialCheck || false;
         var url = OC.generateUrl('/apps/musicapi/getradiosongdetail');
         var data = {streamUrl: streamUrl};
         $.post(url, data).success(function (response) {
             if (response.success == true) {
+                // Will only execute when user enter a radio station
+                if (initialCheck) {
+                    player.play_radio($('.radio-modal input').val());
+                    $('.modal-cancel').click();
+                }
                 jQuery('.song-title').text(response.data.songTitle);
+            } else {
+                $('.radio-modal-error').text(response.data.error);
+                $('#radio-url').focus();
             }
         });
     };
 
     music.second_to_duration = function (second) {
-        if(second == 'NaN') {
+        if(second == 'NaN' || second == 'Infinity') {
             minutes = '00';
             seconds = '00';
         } else {

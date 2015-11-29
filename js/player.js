@@ -48,14 +48,24 @@
     };
 
     player.playPause = function() {
-        if(player.playingState == "Paused") {
-            $('.player-button.play-pause').removeClass('fa-play').addClass('fa-pause');
-            player.playingState = "Playing";
+        if (player.RadioState == 'Playing') {
+            $('.player-button.play-pause').removeClass('fa-stop').removeClass('fa-pause').addClass('fa-play');
+            player.RadioState = 'Paused';
+            player.playerElement.load();
+        } else if (player.RadioState == 'Paused') {
+            $('.player-button.play-pause').removeClass('fa-play').removeClass('fa-pause').addClass('fa-stop');
+            player.RadioState = 'Playing';
             player.playerElement.play();
-        } else if(player.playingState == "Playing") {
-            $('.player-button.play-pause').removeClass('fa-pause').addClass('fa-play');
-            player.playingState = "Paused";
-            player.playerElement.pause();
+        } else {
+            if(player.playingState == "Paused") {
+                $('.player-button.play-pause').removeClass('fa-play').removeClass('fa-stop').addClass('fa-pause');
+                player.playingState = "Playing";
+                player.playerElement.play();
+            } else if(player.playingState == "Playing") {
+                $('.player-button.play-pause').removeClass('fa-pause').removeClass('fa-stop').addClass('fa-play');
+                player.playingState = "Paused";
+                player.playerElement.pause();
+            }
         }
     };
 
@@ -70,12 +80,13 @@
         audio.play();
         player.playingState = "Playing";
         player.RadioState = "Stopped";
+        player.enable_button();
         if(player.radioInterval != false) {
             clearInterval(player.radioInterval);
             player.radioInterval = false;
         }
         player.setVolume();
-        $('.player-button.play-pause').removeClass('fa-play').addClass('fa-pause');
+        $('.player-button.play-pause').removeClass('fa-play').removeClass('fa-stop').addClass('fa-pause');
         $('.scrolling-text .song-title').text(player.currentSong.title);
         $('.song-artist').text(player.currentSong.artist);
         $('.seek-bar-ball').css('left',"0%");
@@ -89,18 +100,21 @@
         audio.setAttribute('preload', 'none');
         audio.setAttribute('src', url);
         audio.pause();
-        audio.load();//suspends and restores all audio element
+        audio.load();
         audio.play();
-        player.playingState = "Playing";
+        player.playingState = "Stopped";
         player.RadioState = "Playing";
         player.setVolume();
-        $('.player-button.play-pause').removeClass('fa-play').addClass('fa-pause');
+        player.disable_button();
+        $('.player-button.play-pause').removeClass('fa-play').removeClass('fa-pause').addClass('fa-stop');
+        $('.playing-song').removeClass('playing-song');
         music.get_radio_song_information(url);
         if(player.radioInterval != false) {
             clearInterval(player.radioInterval);
         }
         player.radioInterval = setInterval(function(){ music.get_radio_song_information(url) }, 30000);
         $('.duration-time').text('00:00');
+        $('.song-artist').text('');
     };
 
     player.setVolume = function() {
@@ -108,6 +122,21 @@
             var volume = $('.volume-bar').slider("option", "value");
             player.playerElement.volume = volume/100;
         }
+    };
+
+    player.disable_button = function() {
+        $('.player-button.backward').css('color','#D6D6D6');
+        $('.player-button.forward').css('color','#D6D6D6');
+        $('.player-button.repeat').css('color','#D6D6D6');
+        $('.player-button.shuffle').css('color','#D6D6D6');
+    };
+
+    player.enable_button = function() {
+        $('.player-button.backward').css('color','');
+        $('.player-button.forward').css('color','');
+        $('.player-button.repeat').css('color','');
+        $('.player-button.shuffle').css('color','');
+        $('.player-button.play').css('color','');
     };
 
 }( window.player = window.player || {}, jQuery, OC ));
